@@ -1,11 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anju - Profile</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    adadad
+    
+
+<video autoplay muted loop id="video-background" class="background-image">
+        <source src="pic/bg3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="profile-card">
+        
+        <div class="avatar-area">
+            <img src="pic/avatar.jpg" alt="Avatar" class="avatar-img">
+        </div>
+        
+        <h1 class="username">Anju</h1>
+        
+        <p class="status-message">wanna be my friend?</p>
+   <div class="social-links">
+           <a href="#" onclick="copyAndNotify('anju0233', 'discord-btn'); return false;" class="social-icon" id="discord-btn">
+    <i class="fab fa-discord"></i>
+</a>
+            <a href="https://steamcommunity.com/id/024342730/" target="_blank" class="social-icon">
+        <i class="fab fa-steam"></i>
+    </a>            <a href="https://www.roblox.com/th/users/493157024/profile" target="_blank" class="social-icon">
+        <img src="pic/roblox.png" alt="Roblox" style="width: 24px; height: 24px;">
+    </a>
+            </a>
+            <a href="https://www.youtube.com/@kanju0243" target="_blank" class="social-icon">
+                <i class="fab fa-youtube"></i>
+            </a>
+            </div>
+        </div>
 </body>
+<script>
+    function copyAndNotify(text, buttonId) {
+        // 1. คัดลอกข้อความ
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        
+        textarea.style.position = 'fixed';
+        textarea.style.top = 0;
+        textarea.style.left = 0;
+
+        document.body.appendChild(textarea);
+        
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text).then(() => {
+                // คัดลอกสำเร็จ
+            }).catch(err => {
+                // คัดลอกล้มเหลว (Fallback)
+                textarea.select();
+                document.execCommand('copy');
+            });
+        } else {
+            // Fallback สำหรับเบราว์เซอร์เก่า
+            textarea.select();
+            document.execCommand('copy');
+        }
+
+        document.body.removeChild(textarea);
+        
+        // 2. สร้างกล่องแจ้งเตือน (Tooltip)
+        const button = document.getElementById(buttonId);
+        
+        // ลบกล่องแจ้งเตือนเก่าก่อนสร้างใหม่
+        const existingTooltip = button.querySelector('.copy-tooltip');
+        if (existingTooltip) {
+            existingTooltip.remove();
+        }
+
+        const tooltip = document.createElement('div');
+        tooltip.className = 'copy-tooltip';
+        tooltip.textContent = 'Copied!';
+        
+        // 3. เพิ่มกล่องแจ้งเตือนและตั้งเวลาลบ
+        button.appendChild(tooltip);
+
+        setTimeout(() => {
+            tooltip.remove();
+        }, 1500);
+    }
+</script>
+</body>
+</html>
 </html>
